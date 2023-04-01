@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "coursework-3p"
+version = "0.1.0"
+description = ""
+authors = ["d.larin <larin.dn@icloud.com>"]
+readme = "README.md"
+packages = [{include = "coursework_3p"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
