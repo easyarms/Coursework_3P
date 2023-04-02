@@ -1,2 +1,5 @@
+.pytest_cache
 .idea
+htmlcov
+.coverage
 poetry.lock
