@@ -9,14 +9,12 @@ def get_data():
     return data
 
 
-def get_filtered_data(data, filtered_empty_from, filtered_empty_date):
+def get_filtered_data(data, filtered_empty_date):
     """
     Возвращает отфильтрованные данные по ключу state со значением EXECUTED.
     Убирает из data значения без date и без from
     """
     data = [x for x in data if 'state' in x and x['state'] == 'EXECUTED']
-    if filtered_empty_from:
-        data = [x for x in data if 'from' in x]
     if filtered_empty_date:
         data = [x for x in data if 'date' in x]
     return data
