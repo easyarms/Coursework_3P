@@ -1,28 +1,17 @@
-from classes import HeadHunterAPI, Supperjob, Connector
+from utils import get_data, get_filtered_data, get_last_values, get_formated_data
 
 
 def main():
-    keyword = "Python"
-    hh = HeadHunterAPI(keyword)
-    sj = Supperjob(keyword)
-    for api in (hh, sj):
-        api.get_vacancies(pages_count=1)
-        vacancies_json.extend(api.get_formatted_vacancies())
+    COUNT_VALUES = 5
+    FILTERED_EMPTY_DATE = True
 
-    connector = Connector(keyword=keyword, vacancies_json=vacancies_json)
+    data = get_data()
+    data = get_filtered_data(data, FILTERED_EMPTY_DATE)
+    data = (get_last_values(data, COUNT_VALUES))
+    data = get_formated_data(data)
 
-    while True:
-        command = input(
-            "1 - Вывести список вакансий; \n"
-            "exit - Выйти. \n"
-        )
-        if command.lower() == 'exit':
-            break
-        elif command.lower() == '1':
-            vacancies = connector.select()
-
-        for vacancy in vacancies:
-            print(vacancy, end='\n\n')
+    for row in data:
+        print(row, end='\n')
 
 
 if __name__ == '__main__':
